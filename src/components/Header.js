@@ -1,21 +1,51 @@
-import React from 'react'
-import newton from './newton.jpg'
-import firebase from 'firebase'
+import React from "react";
+import newton from "./newton.jpg";
+import firebase from "firebase";
+
+import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function Header(props) {
-    return (
-        <>
-        <div className="headbar">
-            <img src={newton} alt="newton" width="50px" height="50px" className="headimg"></img>
-            <div style={{marginLeft:10}}><h3>Newton School</h3></div>
-            {props.name ?<div style={{marginLeft:750}}>
-                {props.name}
-                <button style={{marginLeft:25}}onClick={() => firebase.auth().signOut()}>Sign out!</button>
-                </div>: null}
-            
-        </div>
-        <hr></hr>
-        </>
+  return (
+    <>
+      <div className="headbar">
+          <div className="subheader">
+          <img
+          src={newton}
+          alt="newton"
+          width="40vw"
+          height="45vh"
+          className="heading"
+        ></img>
         
-    )
+          <h3 style={{ display:"flex", flexWrap:"nowrap", marginLeft:"1vw" }}>Newton School</h3>
+
+          </div>
+        
+        
+        {props.name ? (
+          <div className="subheader2" style={{ marginLeft:"15vw" }}>
+            
+            
+              <img className="image-profile" alt="profile" src={firebase.auth().currentUser.photoURL} />
+            
+
+            <div style={{cursor:"pointer",fontWeight:"700", marginRight:"1.2rem"}} onClick={() => firebase.auth().signOut()}>
+              
+              Sign out!
+            </div>
+
+            <FontAwesomeIcon
+              icon={faCaretDown}
+              style={{ color: "grey", fontSize: "1.5rem" }}
+            />
+          </div>
+        ) : null}
+        
+    
+      </div>
+      <hr></hr>
+      
+    </>
+  );
 }

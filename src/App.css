@@ -1,13 +1,39 @@
 .headbar{
   display: flex;
-
+  width:100vw;
+  height:14vh;
+  
+  justify-content: center;
+  
   align-items: center;
 }
-.headimg{
-margin-left: 20px;
-margin-top: 5px;
-margin-bottom: 5px;
-margin-right: 10px;
+.subheader{
+  width: 29vw;
+  height:10vh;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+}
+.subheader2{
+  width: 19vw;
+  height:10vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+.image-profile{
+  width:2.5rem;
+  height:2.5rem;
+  border-radius: 50%;
+  margin-right: 1.2rem;
+  margin-top: 0.8rem;
+}
+.heading{
+
+display: flex;
+justify-content: center;
+align-items: center;
 
 }
 .h1center{
@@ -110,7 +136,12 @@ margin-right: 10px;
   margin-right:0.3rem;
   border-radius:2em;
   background: lightgray;
+  outline: none;
 }
+button{
+  outline: none;
+}
+
 .room-grid{
   margin-top: 1rem;
   display: grid;
@@ -129,7 +160,10 @@ margin-right: 10px;
     border-style: none;
   }
   .hide{
-    visibility: hidden;
+    visibility:hidden;
+  }
+  .show{
+    visibility: visible;
   }
   .highlighted{
     background: grey;
@@ -152,15 +186,15 @@ margin-right: 10px;
 
   .mymodal {
     position: fixed;
-    top: 50%;
+    top: 60%;
     left: 50%;
-    width:40vw;
-    height:80vh;
+    width:35rem;
+    height:25rem;
     transform: translate(-50%, -50%);
     
   
     border: 1px solid #ccc;
-    background: rgba(82, 161, 235,0.8);
+    background: rgba(156, 181, 204, 0.9);
     overflow: auto;
     border-radius: 1rem;
     outline: none;
@@ -170,11 +204,11 @@ margin-right: 10px;
   
   .myoverlay {
     position: fixed;
-    top: 0;
+    top: 0.5;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.904);
   }
   .ReactModal__Overlay {
     opacity: 0;
@@ -192,16 +226,31 @@ margin-right: 10px;
   .container-modal{
     display:flex;
     
-    align-items: center;
+    align-content: center;
     
   }
+  .room-modals{
+    display: flex;
+    flex-direction: column;
+    margin-top: 4rem;
+  }
   .button-close{
-   height: 0px;
-   width: 0px;
+   
    background: none;
   }
 
-h3{
+.grey{
+  background: grey;
+}
+.link-decorator{
   text-decoration: none;
-
+  color: black;
+  font-weight: 800;
+  margin-top: 0.7rem;
+}
+.link-decorator1{
+  text-decoration: none;
+  color:white;
+  font-weight: 800;
+  margin-top: 0.7rem;
 }
