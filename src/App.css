@@ -1,8 +1,7 @@
-
 .headbar{
   display: flex;
   width:100vw;
-  height:10vh;
+  height:70px;
   background: linear-gradient(214deg, rgba(109,115,248,1) 0%, rgba(252,134,246,1) 29%, rgba(171,235,242,1) 100%, rgba(247,244,212,1) 100%);
   border-bottom: 2px solid grey;
   
@@ -12,12 +11,12 @@
 }
 .subheader{
   width: 29vw;
-  height:10vh;
+  height:70px;
   display: grid;
   grid-template-columns: 1fr 4fr;
 }
 .subheader img {
-  margin-top: 0.8vw;
+  margin-top: 15px;
   
 }
 .subheader2{
