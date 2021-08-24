@@ -1,6 +1,7 @@
 import React from "react";
 import Modal from "react-modal";
 import { useState } from "react";
+import firebase from "firebase";
 
 import { useLocation } from "react-router-dom";
 import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
@@ -15,12 +16,33 @@ let hostelno = "";
 
 export default function ChooseRoom() {
   let [counter,setCounter]= useState(0);
+  let [hno,sethno] = useState("");
+  let [rno,setrno] = useState("");
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const [isOpen, setIsOpen] = useState(false);
   hostelno = queryParams.get("hostel");
-  function showModal() {
+ 
+  
+   function showModal() {
     setIsOpen(!isOpen);
+    
+    const db = firebase.firestore();
+  // db.settings({
+  //   timestampsInSnapshots: true
+  // });
+  const userRef = db.collection("users").doc("yo").set({
+    hostelno: hno,
+    roomno: rno,
+  }); 
+  console.log(userRef);
+  // const citiesRef = await db.collection('cities').doc('SF').set({
+  //   name: 'San Francisco', state: 'CA', country: 'USA',
+  //   capital: false, population: 860000
+  // });
+  
+  
+
   }
 
   const grey = (e) => {
@@ -30,12 +52,12 @@ export default function ChooseRoom() {
 
     console.log(e.target.className);
     if (e.target.className === "room-button grey") {
-      setCounter(1);
-      
-      
+      setCounter(1);   
 
       console.log(roomno);
       roomno = e.target.innerText;
+      setrno(roomno);
+      sethno(hostelno);
     }
   };
 
@@ -106,7 +128,7 @@ export default function ChooseRoom() {
         <div>
           <div className="container-modal">
             
-            <FontAwesomeIcon onClick={showModal} icon={faTimesCircle}  style={{ display:"inline",color:"red",fontSize:"1.5rem"}} />
+            <FontAwesomeIcon onClick={showModal} icon={faTimesCircle}  style={{ display:"inline",color:"red",fontSize:"1.5rem",cursor:"pointer"}} />
           
             
             <h2 style={{margin:"auto"}} >Success  </h2>
@@ -119,9 +141,9 @@ export default function ChooseRoom() {
             Your room details are as follows:
           </div>
           <div style={{ marginTop: 20, marginLeft: 10 }}>
-            Hostel No. <span style={{color:"red"}}>{hostelno}</span>
+            Hostel No. <span style={{color:"red"}}>{hno}</span>
           </div>
-          <div style={{ marginTop: 10, marginLeft: 10 }}>Room No. <span style={{color:"red"}}>{roomno}</span></div>
+          <div style={{ marginTop: 10, marginLeft: 10 }}>Room No. <span style={{color:"red"}}>{rno}</span></div>
           </div>
         </div>
       </Modal>
